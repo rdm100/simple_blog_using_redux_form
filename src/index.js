@@ -8,7 +8,6 @@ import reducers from './reducers';
 import PostsIndex from './components/posts_index';
 import promise from 'redux-promise'; 
 
-
 // import App from './components/app';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
