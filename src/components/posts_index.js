@@ -3,6 +3,10 @@ import {connect} from 'react-redux';
 import {fetchPosts} from '../actions/index';
 
 class PostsIndex extends Component{
+	componentDidMount() {
+		this.props.fetchPosts();
+	}
+
 	render() {
 		return(
 			<div>
@@ -11,5 +15,5 @@ class PostsIndex extends Component{
 		);
 	}
 }
-
-export default connect()(PostsIndex);
+// Using shortcut here instead of using function mapDispatchToProps
+export default connect(null, {fetchPosts})(PostsIndex);
