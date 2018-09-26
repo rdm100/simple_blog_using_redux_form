@@ -40,9 +40,37 @@ class PostsNew extends Component {
 		);
 	}
 }
+// The validate function will be called automatically for us at different points during the forms life-cycle, 
+//For example when the user tries to submit the form
+//values is an object that contains all the different values a user has entered into the form
+function validate(values) {
+	const errors = {};
+	// Validate the inputs from values
+	if(values.title.length < 3){
+		errors.title = "Enter a title that is at least 3 characters!";
+	}
+	if(!values.title || values.title.length < 3){
+		errors.title = "Enter a title!";
+	}
+	
+	if(!values.categories || values.categories.length < 3){
+		errors.categories = "Enter a category with at least 3 characters!";
+	}
+	
+	if(!values.content){
+		errors.content = "Enter some content!";
+	}
+
+	// If errors is empty the form is fine to submit
+	// If the errors object has any properties assigned to it at all redux-form will assume that there is
+	// an issue with the form and it failed validation and it should not submit the form at all
+	return errors;
+}
+
 // This is like the connect function from react-redux
 // this allows our reduxForm helper to wrap the PostsNew Component so it can communicate directly from the component to the reducer
 export default reduxForm({
+	validate: validate,
 	form: 'PostsNewForm'
 })(PostsNew);
 
