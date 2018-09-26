@@ -26,3 +26,6 @@ ReactDOM.render(
     </BrowserRouter>
   </Provider>
   , document.querySelector('.container'));
+
+
+// switch component renders the first matching URL in the list of URLs so keep the most specific URL at the top of the list
