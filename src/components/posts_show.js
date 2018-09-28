@@ -5,6 +5,7 @@ export default class PostsShow extends Component {
 		return(
 			<div>posts show</div>
 		);
-	}
+	};
 
 }
+
