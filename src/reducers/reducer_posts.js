@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {FETCH_POSTS, SHOW_POSTS} from '../actions';
+import {FETCH_POSTS, SHOW_POST} from '../actions';
 
 export default function(state = {}, action){
 	switch(action.type){
