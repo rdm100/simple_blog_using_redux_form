@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import {showPost} from '../actions/index';
+import {connect} from 'react-redux';
 
-export default class PostsShow extends Component {
+class PostsShow extends Component {
 	render() {
 		return(
 			<div>posts show</div>
@@ -9,3 +11,6 @@ export default class PostsShow extends Component {
 
 }
 
+
+
+export default connect(null, {showPost})(PostsShow);
