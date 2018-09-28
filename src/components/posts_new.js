@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {createPost} from '../actions/index';
 
 class PostsNew extends Component {
 	renderField(field){
@@ -22,7 +24,8 @@ class PostsNew extends Component {
 	}
 
 	onSubmit(values) {
-		console.log(values);
+		// console.log(values);
+		this.props.createPost(values);
 	}
 
 	render() {
@@ -82,7 +85,9 @@ function validate(values) {
 export default reduxForm({
 	validate,
 	form: 'PostsNewForm'
-})(PostsNew);
+})(
+connect(null, {createPost})(PostsNew)
+);
 
 //the field component is used for event handling and updating different pieces of state and it's up to us to define the component
 //prop which will return some amount of jsx that represents the actual element that gets rendered to the screen 
@@ -102,3 +107,4 @@ export default reduxForm({
 // different context outside the component
 
 // const {handleSubmit} = this.props; is es6 for const {handleSubmit} = this.props.handleSubmit;
+
