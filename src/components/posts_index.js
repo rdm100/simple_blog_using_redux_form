@@ -3,6 +3,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchPosts} from '../actions/index';
 import {Link} from 'react-router-dom';
+import FlipMove from 'react-flip-move';
+import { CSSTransitionGroup } from 'react-transition-group';
+
 
 class PostsIndex extends Component{
 	componentDidMount() {
@@ -22,6 +25,12 @@ class PostsIndex extends Component{
 	}
 
 	render() {
+		const transitionOptions =  {
+			transitionName: "fade",
+			transitionEnterTimeout: 500,
+			transitionLeaveTimeout: 500
+		}
+
 		// console.log(this.props.posts);
 		return(
 			<div>
@@ -32,7 +41,9 @@ class PostsIndex extends Component{
 				</div>
 				<h3>Posts</h3>
 				<ul className="list-group">
+				<CSSTransitionGroup {...transitionOptions}>
 					{this.renderPosts()}
+				</CSSTransitionGroup>	
 				</ul>
 			</div>
 		);
